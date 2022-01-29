@@ -22,7 +22,7 @@ When providing data for the time scale, Chart.js uses timestamps defined as mill
 
 Namespace: `options.scales[scaleId]`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `min` | `number`\|`string` | | The minimum item to display. [more...](#min-max-configuration)
 | `max` | `number`\|`string` | | The maximum item to display. [more...](#min-max-configuration)

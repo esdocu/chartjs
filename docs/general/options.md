@@ -1,18 +1,18 @@
-# Options
+# Opciones
 
-## Option resolution
+## Resolución de opciones
 
-Options are resolved from top to bottom, using a context dependent route.
+Las opciones se resuelven de arriba a abajo, utilizando una ruta dependiente del contexto.
 
-### Chart level options
+### Opciones a nivel de Chart
 
 * options
 * overrides[`config.type`]
 * defaults
 
-### Dataset level options
+### Opciones a nivel de conjunto de datos
 
-`dataset.type` defaults to `config.type`, if not specified.
+`dataset.type` por defecto es `config.type`, si no se especifica.
 
 * dataset
 * options.datasets[`dataset.type`]
@@ -21,7 +21,7 @@ Options are resolved from top to bottom, using a context dependent route.
 * defaults.datasets[`dataset.type`]
 * defaults
 
-### Dataset animation options
+### Opciones de animación de conjuntos de datos
 
 * dataset.animation
 * options.datasets[`dataset.type`].animation
@@ -30,9 +30,9 @@ Options are resolved from top to bottom, using a context dependent route.
 * defaults.datasets[`dataset.type`].animation
 * defaults.animation
 
-### Dataset element level options
+### Opciones a nivel de elemento del conjunto de datos
 
-Each scope is looked up with `elementType` prefix in the option name first, then without the prefix. For example, `radius` for `point` element is looked up using `pointRadius` and if that does not hit, then `radius`.
+Cada scope (alcance) se busca primero con el prefijo `elementType` en el nombre de la opción, luego sin el prefijo. Por ejemplo, `radius` para el elemento `point` se busca usando `pointRadius` y si eso no funciona, entonces `radius`.
 
 * dataset
 * options.datasets[`dataset.type`]
@@ -46,16 +46,16 @@ Each scope is looked up with `elementType` prefix in the option name first, then
 * defaults.elements[`elementType`]
 * defaults
 
-### Scale options
+### Opciones de escala
 
 * options.scales
 * overrides[`config.type`].scales
 * defaults.scales
 * defaults.scale
 
-### Plugin options
+### Opciones de plugins
 
-A plugin can provide `additionalOptionScopes` array of paths to additionally look for its options in. For root scope, use empty string: `''`. Most core plugins also take options from root scope.
+Un complemento (plugin) puede proporcionar un array de rutas `additionalOptionScopes` para buscar adicionalmente sus opciones. Para el scope raíz, usa una cadena vacía: `''`. La mayoría de los complementos del core también toman opciones del scope raíz.
 
 * options.plugins[`plugin.id`]
 * (options.[`...plugin.additionalOptionScopes`])
@@ -63,114 +63,114 @@ A plugin can provide `additionalOptionScopes` array of paths to additionally loo
 * defaults.plugins[`plugin.id`]
 * (defaults.[`...plugin.additionalOptionScopes`])
 
-## Scriptable Options
+## Opciones de Scriptable
 
-Scriptable options also accept a function which is called for each of the underlying data values and that takes the unique argument `context` representing contextual information (see [option context](options.md#option-context)).
-A resolver is passed as second parameter, that can be used to access other options in the same context.
+Las opciones programables (Scriptable) también aceptan una función que se llama para cada uno de los valores de datos subyacentes y que toma el argumento único `context` que representa la información contextual (ver [contexto de opción](options.md#option-context)).
+Se pasa un resolver como segundo parámetro, que se puede usar para acceder a otras opciones en el mismo contexto.
 
-:::tip Note
+:::tip Nota
 
-The `context` argument should be validated in the scriptable function, because the function can be invoked in different contexts. The `type` field is a good candidate for this validation.
+El argumento `context` debe validarse en la función programable, porque la función se puede invocar en diferentes contextos. El campo `type` es un buen candidato para esta validación.
 
 :::
 
-Example:
+Ejemplo:
 
 ```javascript
 color: function(context) {
     const index = context.dataIndex;
     const value = context.dataset.data[index];
-    return value < 0 ? 'red' :  // draw negative values in red
-        index % 2 ? 'blue' :    // else, alternate values in blue and green
+    return value < 0 ? 'red' :  // dibujar valores negativos en rojo
+        index % 2 ? 'blue' :    // de lo contrario, valores alternativos en azul y verde
         'green';
 },
 borderColor: function(context, options) {
-    const color = options.color; // resolve the value of another scriptable option: 'red', 'blue' or 'green'
+    const color = options.color; // resolver el valor de otra opción programable: 'red', 'blue' o 'green'
     return Chart.helpers.color(color).lighten(0.2);
 }
 ```
 
-## Indexable Options
+## Opciones indexables
 
-Indexable options also accept an array in which each item corresponds to the element at the same index. Note that if there are less items than data, the items are looped over. In many cases, using a [function](#scriptable-options) is more appropriate if supported.
+Las opciones indexables también aceptan un array en el que cada elemento corresponde al elemento en el mismo índice. Ten en cuenta que si hay menos elementos que datos, los elementos se repiten. En muchos casos, usar una [función](#scriptable-options) es más apropiado si es compatible.
 
-Example:
+Ejemplo:
 
 ```javascript
 color: [
-    'red',    // color for data at index 0
-    'blue',   // color for data at index 1
-    'green',  // color for data at index 2
-    'black',  // color for data at index 3
+    'red',    // color para datos en el índice 0
+    'blue',   // color para datos en el índice 1
+    'green',  // color para datos en el índice 2
+    'black',  // color para datos en el índice 3
     //...
 ]
 ```
 
-## Option Context
+## Contexto de opción
 
-The option context is used to give contextual information when resolving options and currently only applies to [scriptable options](#scriptable-options).
-The object is preserved, so it can be used to store and pass information between calls.
+El contexto de opción se usa para brindar información contextual al resolver opciones y actualmente solo se aplica a [Opciones de Scriptable](#scriptable-options).
+El objeto se conserva, por lo que se puede utilizar para almacenar y pasar información entre llamadas.
 
-There are multiple levels of context objects:
+Hay varios niveles de objetos de contexto:
 
 * `chart`
   * `dataset`
     * `data`
   * `scale`
     * `tick`
-    * `pointLabel` (only used in the radial linear scale)
+    * `pointLabel` (solo se usa en la escala lineal radial)
   * `tooltip`
 
-Each level inherits its parent(s) and any contextual information stored in the parent is available through the child.
+Cada nivel hereda su(s) padre(s) y cualquier información contextual almacenada en el padre está disponible a través del hijo.
 
-The context object contains the following properties:
+El objeto de contexto contiene las siguientes propiedades:
 
 ### chart
 
-* `chart`: the associated chart
+* `chart`: el chart asociado
 * `type`: `'chart'`
 
 ### dataset
 
-In addition to [chart](#chart)
+Además de [chart](#chart)
 
-* `active`: true if element is active (hovered)
-* `dataset`: dataset at index `datasetIndex`
-* `datasetIndex`: index of the current dataset
-* `index`: same as `datasetIndex`
-* `mode`: the update mode
+* `active`: true si el elemento está activo (hovered)
+* `dataset`: dataset en el índice `datasetIndex`
+* `datasetIndex`: índice del dataset actual
+* `index`: igual a `datasetIndex`
+* `mode`: el modo de actualización
 * `type`: `'dataset'`
 
 ### data
 
-In addition to [dataset](#dataset)
+Además de [dataset](#dataset)
 
-* `active`: true if element is active (hovered)
-* `dataIndex`: index of the current data
-* `parsed`: the parsed data values for the given `dataIndex` and `datasetIndex`
-* `raw`: the raw data values for the given `dataIndex` and `datasetIndex`
-* `element`: the element (point, arc, bar, etc.) for this data
-* `index`: same as `dataIndex`
+* `active`: true si el elemento está activo (hovered)
+* `dataIndex`: índice del data actual
+* `parsed`: los valores de datos analizados para el `dataIndex` y `datasetIndex` dados
+* `raw`: los valores de datos sin procesar para el `dataIndex` y `datasetIndex` dados
+* `element`: el elemento (punto, arco, barra, etc.) para estos datos
+* `index`: igual a `dataIndex`
 * `type`: `'data'`
 
 ### scale
 
-In addition to [chart](#chart)
+Además de [chart](#chart)
 
-* `scale`: the associated scale
+* `scale`: la escala asociada
 * `type`: `'scale'`
 
 ### tick
 
-In addition to [scale](#scale)
+Además de [scale](#scale)
 
-* `tick`: the associated tick object
-* `index`: tick index
+* `tick`: el objeto tick asociado
+* `index`: índice del tick
 * `type`: `'tick'`
 
 ### tooltip
 
-In addition to [chart](#chart)
+Además de [chart](#chart)
 
-* `tooltip`: the tooltip object
-* `tooltipItems`: the items the tooltip is displaying
+* `tooltip`: el objeto tooltip
+* `tooltipItems`: los elementos que muestra el tooltip

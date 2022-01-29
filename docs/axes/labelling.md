@@ -6,7 +6,7 @@ When creating a chart, you want to tell the viewer what data they are viewing. T
 
 Namespace: `options.scales[scaleId].title`, it defines options for the scale title. Note that this only applies to cartesian axes.
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `display` | `boolean` | `false` | If true, display the axis title.
 | `align` | `string` | `'center'` | Alignment of the axis title. Possible options are `'start'`, `'center'` and `'end'`

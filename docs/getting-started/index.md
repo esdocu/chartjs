@@ -1,8 +1,8 @@
-# Getting Started
+# Empezando
 
-Let's get started using Chart.js!
+¡Comencemos a usar Chart.js!
 
-First, we need to have a canvas in our page. It's recommended to give the chart its own container for [responsiveness](../configuration/responsive.md).
+Primero, necesitamos tener un lienzo en nuestra página. Se recomienda darle al chart su propio contenedor para una [capacidad responsive](../configuration/responsive.md).
 
 ```html
 <div>
@@ -10,13 +10,13 @@ First, we need to have a canvas in our page. It's recommended to give the chart 
 </div>
 ```
 
-Now that we have a canvas we can use, we need to include Chart.js in our page.
+Ahora que tenemos un lienzo que podemos usar, debemos incluir Chart.js en nuestra página.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 ```
 
-Now, we can create a chart. We add a script to our page:
+Ahora, podemos crear un chart. Añadimos un script a nuestra página:
 
 ```html
 <script>
@@ -32,7 +32,7 @@ Now, we can create a chart. We add a script to our page:
   const data = {
     labels: labels,
     datasets: [{
-      label: 'My First dataset',
+      label: 'Mi primer dataset',
       backgroundColor: 'rgb(255, 99, 132)',
       borderColor: 'rgb(255, 99, 132)',
       data: [0, 10, 5, 2, 20, 30, 45],
@@ -47,7 +47,7 @@ Now, we can create a chart. We add a script to our page:
 </script>
 ```
 
-Finally, render the chart using our configuration:
+Finalmente, renderizamos el gráfico usando nuestra configuración:
 
 ```html
 <script>
@@ -58,9 +58,9 @@ Finally, render the chart using our configuration:
 </script>
 ```
 
-It's that easy to get started using Chart.js! From here you can explore the many options that can help you customise your charts with scales, tooltips, labels, colors, custom actions, and much more.
+¡Es así de fácil comenzar a usar Chart.js! Desde aquí puedes explorar las muchas opciones que pueden ayudarte a personalizar tus gráficos con escalas, tooltips, etiquetas, colores, acciones personalizadas y mucho más.
 
-Here the sample above is presented with our sample block:
+Aquí se presenta la muestra anterior con nuestro bloque de ejemplo:
 
 ```js chart-editor
 // <block:setup:1>
@@ -75,7 +75,7 @@ const labels = [
 const data = {
   labels: labels,
   datasets: [{
-    label: 'My First dataset',
+    label: 'Mi primer dataset',
     backgroundColor: 'rgb(255, 99, 132)',
     borderColor: 'rgb(255, 99, 132)',
     data: [0, 10, 5, 2, 20, 30, 45],
@@ -97,10 +97,10 @@ module.exports = {
 };
 ```
 
-:::tip Note
-As you can see, some of the boilerplate needed is not visible in our sample blocks, as the samples focus on the configuration options.
+:::tip Nota
+Como puedes ver, algunos de los boilerplates necesarios no están visibles en nuestros bloques de ejemplo, ya que las muestras se centran en las opciones de configuración.
 :::
 
-All our examples are [available online](/samples/).
+Todos nuestros ejemplos están [disponibles en línea](/samples/).
 
-To run the samples locally you first have to install all the necessary packages using the `npm ci` command, after this you can run `npm run docs:dev` to build the documentation. As soon as the build is done, you can go to [http://localhost:8080/samples/](http://localhost:8080/samples/) to see the samples.
+Para ejecutar los ejemplos localmente, primero debes instalar todos los paquetes necesarios con el comando `npm ci`, luego puedes ejecutar `npm run docs:dev` para compilar la documentación. Tan pronto como termine la compilación, puedes ir a [http://localhost:8080/samples/](http://localhost:8080/samples/) para ver los ejemplos.

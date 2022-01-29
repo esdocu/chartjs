@@ -1,9 +1,9 @@
-# Data structures
+# Estructuras de datos
 
-The `data` property of a dataset can be passed in various formats. By default, that `data` is parsed using the associated chart type and scales.
+La propiedad `data` de un conjunto de datos (dataset) se puede pasar en varios formatos. De forma predeterminada, esos datos se analizan utilizando el tipo de gráfico y las escalas asociadas.
 
-If the `labels` property of the main `data` property is used, it has to contain the same amount of elements as the dataset with the most values. These labels are used to label the index axis (default x axes). The values for the labels have to be provided in an array.
-The provides labels can be of the type string or number to be rendered correctly. In case you want multiline labels you can provide an array with each line as one entry in the array.
+Si se utiliza la propiedad `labels` de la propiedad `data` principal, debe contener la misma cantidad de elementos que el conjunto de datos con la mayor cantidad de valores. Estas etiquetas se utilizan para etiquetar el eje de índice (ejes x predeterminados). Los valores de las etiquetas deben proporcionarse en un array.
+Las etiquetas proporcionadas pueden ser del tipo cadena de texto o número para que se representen correctamente. En caso de que desees etiquetas de varias líneas, puedes proporcionar un array con cada línea como una entrada en el array.
 
 ## Primitive[]
 
@@ -17,7 +17,7 @@ data: {
 }
 ```
 
-When the `data` is an array of numbers, values from `labels` array at the same index are used for the index axis (`x` for vertical, `y` for horizontal charts).
+Cuando `data` es un array de números, los valores del array `labels` en el mismo índice se utilizan para el eje del índice (`x` para gráficos verticales, `y` para gráficos horizontales).
 
 ## Object[]
 
@@ -43,22 +43,22 @@ data: {
 type: 'bar',
 data: {
   datasets: [{
-    data: [{x:'Sales', y:20}, {x:'Revenue', y:10}]
+    data: [{x:'Ventas', y:20}, {x:'Beneficios', y:10}]
   }]
 }
 ```
 
-This is also the internal format used for parsed data. In this mode, parsing can be disabled by specifying `parsing: false` at chart options or dataset. If parsing is disabled, data must be sorted and in the formats the associated chart type and scales use internally.
+Este es también el formato interno utilizado para los datos analizados. En este modo, el análisis se puede deshabilitar especificando `parsing: false` en las opciones del chart o en el dataset (conjunto de datos). Si el análisis está deshabilitado, los datos deben estar ordenados y en los formatos que el tipo de gráfico asociado y las escalas usan internamente.
 
-The values provided must be parsable by the associated scales or in the internal format of the associated scales. A common mistake would be to provide integers for the `category` scale, which uses integers as an internal format, where each integer represents an index in the labels array. `null` can be used for skipped values.
+Los valores proporcionados deben ser analizables por las escalas asociadas o en el formato interno de las escalas asociadas. Un error común sería proporcionar números enteros para la escala de `category`, que utiliza números enteros como formato interno, donde cada número entero representa un índice en el array de etiquetas. `null` se puede usar para valores omitidos.
 
-## Object[] using custom properties
+## Object[] usando propiedades personalizadas
 
 ```javascript
 type: 'bar',
 data: {
     datasets: [{
-        data: [{id: 'Sales', nested: {value: 1500}}, {id: 'Purchases', nested: {value: 500}}]
+        data: [{id: 'Ventas', nested: {value: 1500}}, {id: 'Compras', nested: {value: 500}}]
     }]
 },
 options: {
@@ -69,13 +69,13 @@ options: {
 }
 ```
 
-When using the pie/doughnut chart type, the `parsing` object should have a `key` item that points to the value to look at. In this example, the doughnut chart will show two items with values 1500 and 500.
+Cuando se utiliza el tipo de gráfico pie/doughnut, el objeto `parsing` debe tener un elemento `key` que apunte al valor a mirar. En este ejemplo, el gráfico de anillos mostrará dos elementos con valores 1500 y 500.
 
 ```javascript
 type: 'doughnut',
 data: {
     datasets: [{
-        data: [{id: 'Sales', nested: {value: 1500}}, {id: 'Purchases', nested: {value: 500}}]
+        data: [{id: 'Ventas', nested: {value: 1500}}, {id: 'Compras', nested: {value: 500}}]
     }]
 },
 options: {
@@ -99,18 +99,18 @@ data: {
 }
 ```
 
-In this mode, property name is used for `index` scale and value for `value` scale. For vertical charts, index scale is `x` and value scale is `y`.
+En este modo, el nombre de la propiedad se usa para la escala de `index` y el valor para la escala de `value`. Para gráficos verticales, la escala de índice es `x` y la escala de valor es `y`.
 
-## Dataset Configuration
+## Configuración del Dataset
 
 | Name | Type | Description
 | ---- | ---- | -----------
-| `label` | `string` | The label for the dataset which appears in the legend and tooltips.
-| `clip` | `number`\|`object` | How to clip relative to chartArea. Positive value allows overflow, negative value clips that many pixels inside chartArea. 0 = clip at chartArea. Clipping can also be configured per side: clip: {left: 5, top: false, right: -2, bottom: 0}
-| `order` | `number` | The drawing order of dataset. Also affects order for stacking, tooltip and legend.
-| `stack` | `string` | The ID of the group to which this dataset belongs to (when stacked, each group will be a separate stack). Defaults to dataset `type`.
-| `parsing` | `boolean`\|`object` | How to parse the dataset. The parsing can be disabled by specifying parsing: false at chart options or dataset. If parsing is disabled, data must be sorted and in the formats the associated chart type and scales use internally.
-| `hidden`  | `boolean` | Configure the visibility of the dataset. Using `hidden: true` will hide the dataset from being rendered in the Chart.
+| `label` | `string` | La etiqueta del conjunto de datos que aparece en la leyenda y el tooltip.
+| `clip` | `number`\|`object` | Cómo recortar en relación con chartArea. Un valor positivo permite el desbordamiento, un valor negativo recorta muchos píxeles dentro de chartArea. 0 = recortar en chartArea. El recorte también se puede configurar por lado: clip: {left: 5, top: false, right: -2, bottom: 0}
+| `order` | `number` | El orden de dibujo del conjunto de datos. También afecta el orden de apilamiento, el tooltip y la leyenda.
+| `stack` | `string` | El ID del grupo al que pertenece este conjunto de datos (cuando se apilan, cada grupo será una pila separada). El valor predeterminado es el `type` del conjunto de datos.
+| `parsing` | `boolean`\|`object` | Cómo analizar el conjunto de datos. El análisis se puede deshabilitar especificando `parsing: false` en las opciones de gráfico o conjunto de datos. Si el análisis está deshabilitado, los datos deben estar ordenados y en los formatos que el tipo de gráfico asociado y las escalas usan internamente.
+| `hidden`  | `boolean` | Configura la visibilidad del conjunto de datos. El uso de `hidden: true` ocultará el conjunto de datos para que no se renderice en el gráfico.
 
 ### parsing
 
@@ -119,21 +119,21 @@ const data = [{x: 'Jan', net: 100, cogs: 50, gm: 50}, {x: 'Feb', net: 120, cogs:
 const cfg = {
     type: 'bar',
     data: {
-        labels: ['Jan', 'Feb'],
+        labels: ['Ene', 'Feb'],
         datasets: [{
-            label: 'Net sales',
+            label: 'Ventas netas',
             data: data,
             parsing: {
                 yAxisKey: 'net'
             }
         }, {
-            label: 'Cost of goods sold',
+            label: 'Costo de los bienes vendidos',
             data: data,
             parsing: {
                 yAxisKey: 'cogs'
             }
         }, {
-            label: 'Gross margin',
+            label: 'Margen bruto',
             data: data,
             parsing: {
                 yAxisKey: 'gm'

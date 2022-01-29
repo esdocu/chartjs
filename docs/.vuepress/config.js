@@ -3,14 +3,21 @@ const docsVersion = "latest";
 const base = process.env.NODE_ENV === "development" ? '/docs/master/' : `/docs/${docsVersion}/`;
 
 module.exports = {
-  title: 'Chart.js',
-  description: 'Open source HTML5 Charts for your website',
+  title: 'Chart.js en Español',
+  description: 'Charts HTML5 de código abierto para tu sitio web. Traducción de la documentación oficial.',
   theme: 'chartjs',
   base,
   dest: path.resolve(__dirname, '../../dist/docs'),
   head: [
     ['link', {rel: 'icon', href: '/favicon.ico'}],
   ],
+  locales: {
+    '/': {
+      lang: 'es',
+      title: 'Chart.js en Español',
+      description: 'Charts HTML5 de código abierto para tu sitio web. Traducción de la documentación oficial.',
+    }
+  },
   plugins: [
     'tabs',
     ['flexsearch'],
@@ -20,7 +27,7 @@ module.exports = {
     [
       '@vuepress/google-analytics',
       {
-        'ga': 'UA-28909194-3'
+        'ga': 'UA-217402400-2'
       }
     ],
     ['redirect', {
@@ -45,16 +52,16 @@ module.exports = {
     ['@simonbrunel/vuepress-plugin-versions', {
       filters: {
         suffix: (tag) => tag ? ` (${tag})` : '',
-        title: (v, vars) => window.location.href.includes('master') ? 'Development (master)' : v + (vars.tag ? ` (${tag})` : ''),
+        title: (v, vars) => window.location.href.includes('master') ? 'Desarrollo (master)' : v + (vars.tag ? ` (${tag})` : ''),
       },
       menu: {
         text: '{{version|title}}',
         items: [
           {
-            text: 'Documentation',
+            text: 'Documentación',
             items: [
               {
-                text: 'Development (master)',
+                text: 'Desarrollo (master)',
                 link: '/docs/master/',
               },
               {
@@ -99,8 +106,8 @@ module.exports = {
   themeConfig: {
     repo: 'chartjs/Chart.js',
     logo: '/favicon.ico',
-    lastUpdated: 'Last Updated',
-    searchPlaceholder: 'Search...',
+    lastUpdated: 'Última actualización',
+    searchPlaceholder: 'Buscar...',
     editLinks: false,
     docsDir: 'docs',
     chart: {
@@ -112,12 +119,12 @@ module.exports = {
       ]
     },
     nav: [
-      {text: 'Home', link: '/'},
+      {text: 'Inicio', link: '/'},
       {text: 'API', link: '/api/'},
-      {text: 'Samples', link: `/samples/`},
+      {text: 'Ejemplos', link: `/samples/`},
       {
-        text: 'Ecosystem',
-        ariaLabel: 'Community Menu',
+        text: 'Ecosistema',
+        ariaLabel: 'Menú de la comunidad',
         items: [
           { text: 'Awesome', link: 'https://github.com/chartjs/awesome' },
           { text: 'Slack', link: 'https://chartjs-slack.herokuapp.com/' },
@@ -279,13 +286,14 @@ module.exports = {
       '/': [
         '',
         {
-          title: 'Getting Started',
+          title: 'Empezando',
           children: [
             'getting-started/',
             'getting-started/installation',
             'getting-started/integration',
             'getting-started/usage',
-            'getting-started/v3-migration'
+            // 'getting-started/v3-migration'
+            ['https://www.chartjs.org/docs/latest/getting-started/v3-migration.html', '3.x Migration Guide']            
           ]
         },
         {
@@ -301,7 +309,7 @@ module.exports = {
           ]
         },
         {
-          title: 'Configuration',
+          title: 'Configuración',
           children: [
             'configuration/',
             'configuration/responsive',

@@ -178,7 +178,7 @@ All these values, if `undefined`, fallback to the associated [`elements.arc.*`](
 
 These are the customisation options specific to Pie & Doughnut charts. These options are looked up on access, and form together with the global chart configuration the options of the chart.
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `cutout` | `number`\|`string` | `50%` - for doughnut, `0` - for pie | The portion of the chart that is cut out of the middle. If `string` and ending with '%', percentage of the chart radius. `number` is considered to be pixels.
 | `radius` | `number`\|`string` | `100%` | The outer radius of the chart. If `string` and ending with '%', percentage of the maximum radius. `number` is considered to be pixels.

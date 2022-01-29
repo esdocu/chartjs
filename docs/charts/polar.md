@@ -114,7 +114,7 @@ All these values, if `undefined`, fallback to the associated [`elements.arc.*`](
 
 These are the customisation options specific to Polar Area charts. These options are looked up on access, and form together with the [global chart default options](#default-options) the options of the chart.
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `animation.animateRotate` | `boolean` | `true` | If true, the chart will animate in with a rotation animation. This property is in the `options.animation` object.
 | `animation.animateScale` | `boolean` | `true` | If true, will animate scaling the chart from the center outwards.

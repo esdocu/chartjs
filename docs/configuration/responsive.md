@@ -1,30 +1,30 @@
 # Responsive Charts
 
-When it comes to changing the chart size based on the window size, a major limitation is that the canvas *render* size (`canvas.width` and `.height`) can **not** be expressed with relative values, contrary to the *display* size (`canvas.style.width` and `.height`). Furthermore, these sizes are independent from each other and thus the canvas *render* size does not adjust automatically based on the *display* size, making the rendering inaccurate.
+Cuando se trata de cambiar el tamaño del chart en función del tamaño de la ventana, una limitación importante es que el tamaño del *renderizado* del canvas (`canvas.width` y `.height`) **no** puede expresarse con valores relativos, contrario al tamaño de *display* (`canvas.style.width` y `.height`). Además, estos tamaños son independientes entre sí y, por lo tanto, el tamaño de la *renderización* del canvas no se ajusta automáticamente en función del tamaño de *display*, lo que hace que la renderización sea imprecisa.
 
-The following examples **do not work**:
+Los siguientes ejemplos **no funcionan**:
 
-- `<canvas height="40vh" width="80vw">`: **invalid** values, the canvas doesn't resize ([example](https://codepen.io/chartjs/pen/oWLZaR))
-- `<canvas style="height:40vh; width:80vw">`: **invalid** behavior, the canvas is resized but becomes blurry ([example](https://codepen.io/chartjs/pen/WjxpmO))
-- `<canvas style="margin: 0 auto;">`: **invalid** behavior, the canvas continually shrinks. Chart.js needs a dedicated container for each canvas and this styling should be applied there.
+- `<canvas height="40vh" width="80vw">`: valores **no válidos**, el canvas no cambia de tamaño ([ejemplo](https://codepen.io/chartjs/pen/oWLZaR))
+- `<canvas style="height:40vh; width:80vw">`: comportamiento **no válido**, el canvas cambia de tamaño pero se vuelve borroso ([ejemplo](https://codepen.io/chartjs/pen/WjxpmO))
+- `<canvas style="margin: 0 auto;">`: comportamiento **no válido**, el canvas se encoge continuamente. Chart.js necesita un contenedor dedicado para cada canvas y este estilo debe aplicarse allí.
 
-Chart.js provides a [few options](#configuration-options) to enable responsiveness and control the resize behavior of charts by detecting when the canvas *display* size changes and update the *render* size accordingly.
+Chart.js proporciona [algunas opciones](#configuration-options) para habilitar la capacidad de ser responsive y controlar el comportamiento de cambio de tamaño de los charts al detectar cuándo cambia el tamaño de *display* (pantalla) del canvas y actualizar el tamaño de *renderización* en consecuencia.
 
-## Configuration Options
+## Opciones de configuración
 
-Namespace: `options`
+Espacio de nombres: `options`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
-| `responsive` | `boolean` | `true` | Resizes the chart canvas when its container does ([important note...](#important-note)).
-| `maintainAspectRatio` | `boolean` | `true` | Maintain the original canvas aspect ratio `(width / height)` when resizing.
-| `aspectRatio` | `number` | `2` | Canvas aspect ratio (i.e. `width / height`, a value of 1 representing a square canvas). Note that this option is ignored if the height is explicitly defined either as attribute or via the style.
-| `onResize` | `function` | `null` | Called when a resize occurs. Gets passed two arguments: the chart instance and the new size.
-| `resizeDelay` | `number` | `0` | Delay the resize update by give amount of milliseconds. This can ease the resize process by debouncing update of the elements.
+| `responsive` | `boolean` | `true` | Cambia el tamaño del canvas del chart cuando lo hace su contenedor ([nota importante...](#nota-importante)).
+| `maintainAspectRatio` | `boolean` | `true` | Mantener la relación de aspecto del canvas original `(ancho / alto)` al cambiar el tamaño.
+| `aspectRatio` | `number` | `2` | Relación de aspecto del canvas (es decir, `ancho/alto`, un valor de 1 que representa un canvas cuadrado). Ten en cuenta que esta opción se ignora si la altura se define explícitamente como atributo o mediante el estilo.
+| `onResize` | `function` | `null` | Se llama cuando se produce un cambio de tamaño. Obtiene dos argumentos: la instancia del chart y el nuevo tamaño.
+| `resizeDelay` | `number` | `0` | Retrasa la actualización de cambio de tamaño en una cantidad determinada de milisegundos. Esto puede facilitar el proceso de cambio de tamaño eliminando la actualización de los elementos.
 
-## Important Note
+## Nota IMPORTANTE
 
-Detecting when the canvas size changes can not be done directly from the `canvas` element. Chart.js uses its parent container to update the canvas *render* and *display* sizes. However, this method requires the container to be **relatively positioned** and **dedicated to the chart canvas only**. Responsiveness can then be achieved by setting relative values for the container size ([example](https://codepen.io/chartjs/pen/YVWZbz)):
+No se puede detectar cuándo cambia el tamaño del canvas directamente desde el elemento `canvas`. Chart.js usa su contenedor principal para actualizar los tamaños de *render* y *display* del canvas. Sin embargo, este método requiere que el contenedor esté **relativamente posicionado** y **dedicado solo al canvas del chart**. La capacidad responsive se puede lograr estableciendo valores relativos para el tamaño del contenedor ([ejemplo](https://codepen.io/chartjs/pen/YVWZbz)):
 
 ```html
 <div class="chart-container" style="position: relative; height:40vh; width:80vw">
@@ -32,18 +32,18 @@ Detecting when the canvas size changes can not be done directly from the `canvas
 </div>
 ```
 
-The chart can also be programmatically resized by modifying the container size:
+El gráfico también se puede cambiar de tamaño mediante programación modificando el tamaño del contenedor:
 
 ```javascript
 chart.canvas.parentNode.style.height = '128px';
 chart.canvas.parentNode.style.width = '128px';
 ```
 
-Note that in order for the above code to correctly resize the chart height, the [`maintainAspectRatio`](#configuration-options) option must also be set to `false`.
+Ten en cuenta que para que el código anterior cambie correctamente el tamaño de la altura del gráfico, la opción [`maintainAspectRatio`](#configuration-options) también debe establecerse en `false`.
 
-## Printing Resizable Charts
+## Impresión de gráficos de tamaño variable
 
-CSS media queries allow changing styles when printing a page. The CSS applied from these media queries may cause charts to need to resize. However, the resize won't happen automatically. To support resizing charts when printing, you need to hook the [onbeforeprint](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeprint) event and manually trigger resizing of each chart.
+Las media queries CSS permiten cambiar los estilos al imprimir una página. El CSS aplicado a partir de estas consultas de medios puede hacer que los gráficos deban cambiar el tamaño. Sin embargo, el cambio de tamaño no ocurrirá automáticamente. Para admitir el cambio de tamaño de los gráficos al imprimir, debes conectar el evento [onbeforeprint](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onbeforeprint) y activar manualmente el cambio de tamaño de cada gráfico.
 
 ```javascript
 function beforePrintHandler () {
@@ -53,7 +53,7 @@ function beforePrintHandler () {
 }
 ```
 
-You may also find that, due to complexities in when the browser lays out the document for printing and when resize events are fired, Chart.js is unable to properly resize for the print layout. To work around this, you can pass an explicit size to `.resize()` then use an [onafterprint](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onafterprint) event to restore the automatic size when done.
+También puede encontrar que, debido a las complejidades cuando el navegador diseña el documento para imprimir y cuando se activan los eventos de cambio de tamaño, Chart.js no puede cambiar el tamaño correctamente para el diseño de impresión. Para evitar esto, puedes pasar un tamaño explícito a `.resize()` y luego usar un evento [onafterprint](https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onafterprint) para restaurar el tamaño automático cuando hayas terminado.
 
 ```javascript
 window.addEventListener('beforeprint', () => {

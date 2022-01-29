@@ -16,7 +16,7 @@ Point elements are used to represent the points in a line, radar or bubble chart
 
 Namespace: `options.elements.point`, global point options: `Chart.defaults.elements.point`.
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `radius` | `number` | `3` | Point radius.
 | [`pointStyle`](#point-styles) | [`pointStyle`](#types) | `'circle'` | Point style.
@@ -56,7 +56,7 @@ Line elements are used to represent the line in a line chart.
 
 Namespace: `options.elements.line`, global line options: `Chart.defaults.elements.line`.
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `tension` | `number` | `0` | Bézier curve tension (`0` for no Bézier curves).
 | `backgroundColor` | [`Color`](/general/colors.md) | `Chart.defaults.backgroundColor` | Line fill color.
@@ -77,7 +77,7 @@ Bar elements are used to represent the bars in a bar chart.
 
 Namespace: `options.elements.bar`, global bar options: `Chart.defaults.elements.bar`.
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `backgroundColor` | [`Color`](/general/colors.md) | `Chart.defaults.backgroundColor` | Bar fill color.
 | `borderWidth` | `number` | `0` | Bar stroke width.
@@ -93,7 +93,7 @@ Arcs are used in the polar area, doughnut and pie charts.
 
 Namespace: `options.elements.arc`, global arc options: `Chart.defaults.elements.arc`.
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `angle` - for polar only | `number` | `circumference / (arc count)` | Arc angle to cover.
 | `backgroundColor` | [`Color`](/general/colors.md) | `Chart.defaults.backgroundColor` | Arc fill color.

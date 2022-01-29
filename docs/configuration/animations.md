@@ -131,7 +131,7 @@ The default configuration is defined here: <a href="https://github.com/chartjs/C
 
 Namespace: `options.animation`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `duration` | `number` | `1000` | The number of milliseconds an animation takes.
 | `easing` | `string` | `'easeOutQuart'` | Easing function to use. [more...](#easing)
@@ -147,7 +147,7 @@ In addition to the main [animation configuration](#animation-configuration), the
 
 Namespace: `options.animations[animation]`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `properties` | `string[]` | `key` | The property names this configuration applies to. Defaults to the key name of this object.
 | `type` | `string` | `typeof property` | Type of property, determines the interpolator used. Possible values: `'number'`, `'color'` and `'boolean'`. Only really needed for `'color'`, because `typeof` does not get that right.
@@ -243,7 +243,7 @@ The callbacks can be set only at main [animation configuration](#animation-confi
 
 Namespace: `options.animation`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `onProgress` | `function` | `null` | Callback called on each step of an animation.
 | `onComplete` | `function` | `null` | Callback called when all animations are completed.

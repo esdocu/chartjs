@@ -1,12 +1,12 @@
 # Padding
 
-Padding values in Chart options can be supplied in couple of different formats.
+Los valores de padding (padding) en las opciones de charts se pueden proporcionar en un par de formatos diferentes.
 
-## Number
+## Número
 
-If this value is a number, it is applied to all sides (left, top, right, bottom).
+Si este valor es un número, se aplica a todos los lados (izquierda, arriba, derecha, abajo).
 
-For example, defining a 20px padding to all sides of chart:
+Por ejemplo, definiendo un padding de 20px en todos los lados del gráfico:
 
 ```javascript
 let chart = new Chart(ctx, {
@@ -20,12 +20,12 @@ let chart = new Chart(ctx, {
 });
 ```
 
-## {top, left, bottom, right} object
+## Objeto {top, left, bottom, right}
 
-If this value is an object, the `left` property defines the left padding. Similarly the `right`, `top` and `bottom` properties can also be specified.
-Omitted properties default to `0`.
+Si este valor es un objeto, la propiedad `left` define el padding izquierdo. Del mismo modo, también se pueden especificar las propiedades `right`, `top` y `bottom`.
+Las propiedades omitidas tienen el valor predeterminado `0`.
 
-Lets say you wanted to add 50px of padding to the left side of the chart canvas, you would do:
+Digamos que deseas agregar 50px de padding al lado izquierdo del canvas del chart, harías lo siguiente:
 
 ```javascript
 let chart = new Chart(ctx, {
@@ -41,11 +41,11 @@ let chart = new Chart(ctx, {
 });
 ```
 
-## {x, y} object
+## Objeto {x, y}
 
-This is a shorthand for defining left/right and top/bottom to the same values.
+Esta es una abreviatura para definir izquierda/derecha y arriba/abajo con los mismos valores.
 
-For example, 10px left / right and 4px top / bottom padding on a Radial Linear Axis [tick backdropPadding](../axes/radial/linear.md#linear-radial-axis-specific-tick-options):
+Por ejemplo, 10px de padding a la izquierda/derecha y 4 píxeles en la parte superior/inferior en un Radial Linear Axis [tick backdropPadding](../axes/radial/linear.md#linear-radial-axis-specific-tick-options):
 
 ```javascript
 let chart = new Chart(ctx, {

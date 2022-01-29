@@ -1,41 +1,41 @@
-# Performance
+# Rendimiento
 
-Chart.js charts are rendered on `canvas` elements, which makes rendering quite fast. For large datasets or performance sensitive applications, you may wish to consider the tips below.
+Los gráficos de Chart.js se renderizan en elementos `canvas`, lo que hace que la renderización sea bastante rápida. Para grandes conjuntos de datos o aplicaciones sensibles al rendimiento, es posible que desees considerar los siguientes consejos.
 
-## Data structure and format
+## Estructura y formato de datos
 
-### Parsing
+### Análisis
 
-Provide prepared data in the internal format accepted by the dataset and scales, and set `parsing: false`. See [Data structures](data-structures.md) for more information.
+Proporciona los datos preparados en el formato interno aceptado por el conjunto de datos y las escalas, y configura `parsing: false`. Consulta [Estructuras de datos](data-structures.md) para obtener más información.
 
-### Data normalization
+### Normalización de datos
 
-Chart.js is fastest if you provide data with indices that are unique, sorted, and consistent across datasets and provide the `normalized: true` option to let Chart.js know that you have done so. Even without this option, it can sometimes still be faster to provide sorted data.
+Chart.js es más rápido si proporcionas datos con índices que son únicos, ordenados y coherentes entre conjuntos de datos y proporcionas la opción `normalized: true` para que Chart.js sepa que lo has hecho. Incluso sin esta opción, a veces puede ser más rápido proporcionar datos ordenados.
 
-### Decimation
+### Diezmamiento
 
-Decimating your data will achieve the best results. When there is a lot of data to display on the graph, it doesn't make sense to show tens of thousands of data points on a graph that is only a few hundred pixels wide.
+Diezmar tus datos logrará los mejores resultados. Cuando hay una gran cantidad de datos para mostrar en el gráfico, no tiene sentido mostrar decenas de miles de puntos de datos en un gráfico que tiene solo unos pocos cientos de píxeles de ancho.
 
-The [decimation plugin](../configuration/decimation.md) can be used with line charts to decimate data before the chart is rendered. This will provide the best performance since it will reduce the memory needed to render the chart.
+El [complemento de eliminación](../configuration/decimation.md) se puede usar con gráficos de líneas para diezmar los datos antes de que se renderice el gráfico. Esto proporcionará el mejor rendimiento ya que reducirá la memoria necesaria para renderizar el gráfico.
 
-Line charts are able to do [automatic data decimation during draw](#automatic-data-decimation-during-draw), when certain conditions are met. You should still consider decimating data yourself before passing it in for maximum performance since the automatic decimation occurs late in the chart life cycle.
+Los gráficos de líneas pueden hacer [diezmación automática de datos durante el dibujado](#automatic-data-decimation-during-draw), cuando se cumplen ciertas condiciones. Aún debes considerar diezmar los datos tú mismo antes de pasarlos para obtener el máximo rendimiento, ya que la destrucción automática ocurre tarde en el ciclo de vida del gráfico.
 
-## Tick Calculation
+## Cálculo de ticks
 
-### Rotation
+### Rotación
 
-[Specify a rotation value](../axes/cartesian/index.md#tick-configuration) by setting `minRotation` and `maxRotation` to the same value, which avoids the chart from having to automatically determine a value to use.
+[Especifica un valor de rotación](../axes/cartesian/index.md#tick-configuration) configurando `minRotation` y `maxRotation` en el mismo valor, lo que evita que el gráfico tenga que determinar automáticamente un valor para usar.
 
-### Sampling
+### Muestreo
 
-Set the [`ticks.sampleSize`](../axes/cartesian/index.md#tick-configuration) option. This will determine how large your labels are by looking at only a subset of them in order to render axes more quickly. This works best if there is not a large variance in the size of your labels.
+Configura la opción [`ticks.sampleSize`](../axes/cartesian/index.md#tick-configuration). Esto determinará qué tan grandes son tus etiquetas al observar solo un subconjunto de ellas para renderizar los ejes más rápidamente. Esto funciona mejor si no hay una gran variación en el tamaño de las etiquetas.
 
-## Disable Animations
+## Deshabilitar animaciones
 
-If your charts have long render times, it is a good idea to disable animations. Doing so will mean that the chart needs to only be rendered once during an update instead of multiple times. This will have the effect of reducing CPU usage and improving general page performance.
-Line charts use Path2D caching when animations are disabled and Path2D is available.
+Si tus gráficos tienen tiempos de procesamiento prolongados, es una buena idea deshabilitar las animaciones. Si lo haces, significará que el gráfico solo debe renderizarse una vez durante una actualización en lugar de varias veces. Esto tendrá el efecto de reducir el uso de la CPU y mejorar el rendimiento general de la página.
+Los gráficos de líneas utilizan el almacenamiento en caché de Path2D cuando las animaciones están deshabilitadas y Path2D está disponible.
 
-To disable animations
+Para deshabilitar animaciones:
 
 ```javascript
 new Chart(ctx, {
@@ -47,9 +47,9 @@ new Chart(ctx, {
 });
 ```
 
-## Specify `min` and `max` for scales
+## Especifíca `min` y `max` para escalas
 
-If you specify the `min` and `max`, the scale does not have to compute the range from the data.
+Si especificas `min` y `max`, la escala no tiene que calcular el rango a partir de los datos.
 
 ```javascript
 new Chart(ctx, {
@@ -72,19 +72,19 @@ new Chart(ctx, {
 });
 ```
 
-## Parallel rendering with web workers (Chromium only)
+## Renderización paralela con web workers (solo Chromium)
 
-Chromium (Chrome: version 69, Edge: 79, Opera: 56) added the ability to [transfer rendering control of a canvas](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/transferControlToOffscreen) to a web worker. Web workers can use the [OffscreenCanvas API](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) to render from a web worker onto canvases in the DOM. Chart.js is a canvas-based library and supports rendering in a web worker - just pass an OffscreenCanvas into the Chart constructor instead of a Canvas element. Note that as of today, this API is only supported in Chromium based browsers.
+Chromium (Chrome: versión 69, Edge: 79, Opera: 56) agregó la capacidad de [transferir el control de renderización de un canvas](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/transferControlToOffscreen) a un web worker. Los web workers pueden usar la [API OffscreenCanvas](https://developer.mozilla.org/en-US/docs/Web/API/OffscreenCanvas) para renderizar desde un web worker en canvas en el DOM. Chart.js es una biblioteca basada en canvas y admite la renderización en un web worker: simplemente pasa un OffscreenCanvas al constructor Chart en lugar de un elemento Canvas. Ten en cuenta que, a día de hoy, esta API solo es compatible con navegadores basados ​​en Chromium.
 
-By moving all Chart.js calculations onto a separate thread, the main thread can be freed up for other uses. Some tips and tricks when using Chart.js in a web worker:
+Al mover todos los cálculos de Chart.js a un subproceso separado, el subproceso principal se puede liberar para otros usos. Algunos consejos y trucos al usar Chart.js en un web worker:
 
-* Transferring data between threads can be expensive, so ensure that your config and data objects are as small as possible. Try generating them on the worker side if you can (workers can make HTTP requests!) or passing them to your worker as ArrayBuffers, which can be transferred quickly from one thread to another.
-* You can't transfer functions between threads, so if your config object includes functions you'll have to strip them out before transferring and then add them back later.
-* You can't access the DOM from worker threads, so Chart.js plugins that use the DOM (including any mouse interactions) will likely not work.
-* Ensure that you have a fallback if you support browsers other than the most modern Chromium browsers.
-* Resizing the chart must be done manually. See an example in the worker code below.
+* La transferencia de datos entre subprocesos puede ser costosa, así que asegúrate de que tu configuración y tus objetos de datos sean lo más pequeños posible. Intenta generarlos en el lado del worker si puedes (¡los workeres pueden hacer solicitudes HTTP!) O pásalos a tu worker como ArrayBuffers, que se pueden transferir rápidamente de un subproceso a otro.
+* No puedes transferir funciones entre subprocesos, por lo que si tu objeto de configuración incluye funciones, deberás eliminarlas antes de transferirlas y luego agregarlas nuevamente.
+* No puedes acceder al DOM desde subprocesos de worker, por lo que es probable que los complementos de Chart.js que usan el DOM (incluidas las interacciones del mouse) no funcionen.
+* Asegúrate de tener una alternativa si es compatible con navegadores que no sean los navegadores Chromium más modernos.
+* El cambio de tamaño del chart debe hacerse manualmente. Mira un ejemplo en el código de worker a continuación.
 
-Example main thread code:
+Ejemplo de código de hilo principal:
 
 ```javascript
 const config = {};
@@ -95,100 +95,100 @@ const worker = new Worker('worker.js');
 worker.postMessage({canvas: offscreenCanvas, config}, [offscreenCanvas]);
 ```
 
-Example worker code, in `worker.js`:
+Ejemplo de código de worker, en `worker.js`:
 
 ```javascript
 onmessage = function(event) {
     const {canvas, config} = event.data;
     const chart = new Chart(canvas, config);
 
-    // Resizing the chart must be done manually, since OffscreenCanvas does not include event listeners.
+    // El cambio de tamaño del chart debe hacerse manualmente, ya que OffscreenCanvas no incluye detectores de eventos.
     canvas.width = 100;
     canvas.height = 100;
     chart.resize();
 };
 ```
 
-## Line Charts
+## Charts de líneas
 
-### Leave Bézier curves disabled
+### Dejar las curvas de Bézier deshabilitadas
 
-If you are drawing lines on your chart, disabling Bézier curves will improve render times since drawing a straight line is more performant than a Bézier curve. Bézier curves are disabled by default.
+Si estás dibujando líneas en su gráfico, deshabilitar las curvas Bézier mejorará los tiempos de renderizado, ya que dibujar una línea recta es más eficaz que una curva Bézier. Las curvas de Bézier están desactivadas de forma predeterminada.
 
-### Automatic data decimation during draw
+### Eliminación automática de datos durante el dibujado
 
-Line element will automatically decimate data, when `tension`, `stepped`, and `borderDash` are left set to their default values (`false`, `0`, and `[]` respectively). This improves rendering speed by skipping drawing of invisible line segments.
+El elemento de línea diezmará automáticamente los datos, cuando `tension`, `stepped` y `borderDash` se dejen en sus valores predeterminados (`false`, `0` y `[]` respectivamente). Esto mejora la velocidad de renderizado al omitir el dibujo de segmentos de líneas invisibles.
 
-### Enable spanGaps
+### Habilitar spanGaps
 
-If you have a lot of data points, it can be more performant to enable `spanGaps`. This disables segmentation of the line, which can be an unneeded step.
+Si tiene muchos puntos de datos, puedea ser más eficaz habilitar `spanGaps`. Esto deshabilita la segmentación de la línea, lo que puede ser un paso innecesario.
 
-To enable `spanGaps`:
+Para habilitar `spanGaps`:
 
 ```javascript
 new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-            spanGaps: true // enable for a single dataset
+            spanGaps: true // habilitar para un solo conjunto de datos
         }]
     },
     options: {
-        spanGaps: true // enable for all datasets
+        spanGaps: true // habilitar para todos los conjuntos de datos
     }
 });
 ```
 
-### Disable Line Drawing
+### Desactivar dibujo lineal
 
-If you have a lot of data points, it can be more performant to disable rendering of the line for a dataset and only draw points. Doing this means that there is less to draw on the canvas which will improve render performance.
+Si tienes muchos puntos de datos, puede ser más eficaz deshabilitar la renderización de la línea para un conjunto de datos y solo dibujar puntos. Hacer esto significa que hay menos para dibujar en el lienzo, lo que mejorará el rendimiento del renderizado.
 
-To disable lines:
+Para deshabilitar líneas:
 
 ```javascript
 new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-            showLine: false // disable for a single dataset
+            showLine: false // deshabilitar para un solo conjunto de datos
         }]
     },
     options: {
-        showLine: false // disable for all datasets
+        showLine: false // deshabilitar para todos los conjuntos de datos
     }
 });
 ```
 
-### Disable Point Drawing
+### Desactivar dibujo de puntos
 
-If you have a lot of data points, it can be more performant to disable rendering of the points for a dataset and only draw line. Doing this means that there is less to draw on the canvas which will improve render performance.
+Si tienes muchos puntos de datos, puede ser más eficaz deshabilitar la renderización de los puntos para un conjunto de datos y solo dibujar una línea. Hacer esto significa que hay menos para dibujar en el lienzo, lo que mejorará el rendimiento del renderizado.
 
-To disable point drawing:
+Para deshabilitar el dibujo de puntos:
 
 ```javascript
 new Chart(ctx, {
     type: 'line',
     data: {
         datasets: [{
-            pointRadius: 0 // disable for a single dataset
+            pointRadius: 0 // deshabilitar para un solo conjunto de datos
         }]
     },
     options: {
         datasets: {
             line: {
-                pointRadius: 0 // disable for all `'line'` datasets
+                pointRadius: 0 // deshabilitar para todos los conjuntos de datos `'line'`
             }
         },
         elements: {
             point: {
-                radius: 0 // default to disabled in all datasets
+                radius: 0 // Predeterminado, deshabilitado en todos los conjuntos de datos
             }
         }
     }
 });
 ```
 
-## When transpiling with Babel, consider using `loose` mode
+## Al transpilar con Babel, consider usar el modo `loose`
 
-Babel 7.9 changed the way classes are constructed. It is slow, unless used with `loose` mode.
-[More information](https://github.com/babel/babel/issues/11356)
+Babel 7.9 cambió la forma en que se construyen las clases. Es lento, a menos que se use con el modo `loose`.
+[Más información](https://github.com/babel/babel/issues/11356)

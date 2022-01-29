@@ -2,7 +2,7 @@
 
 Namespace: `options.scales[scaleId]`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `bounds` | `string` | `'ticks'` | Determines the scale bounds. [more...](./index.md#scale-bounds)
 | `position` | `string` \| `object` | | Position of the axis. [more...](./index.md#axis-position)

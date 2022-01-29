@@ -14,7 +14,7 @@ The logarithmic scale is used to chart numerical data. It can be placed on eithe
 
 Namespace: `options.scales[scaleId]`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `format` | `object` | | The [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) options used by the default label formatter
 

@@ -1,5 +1,5 @@
 ---
-title: Installation
+title: Instalación
 ---
 
 ## npm
@@ -17,7 +17,7 @@ npm install chart.js
 
 [![cdnjs](https://img.shields.io/cdnjs/v/Chart.js.svg?style=flat-square&maxAge=600)](https://cdnjs.com/libraries/Chart.js)
 
-Chart.js built files are available on [CDNJS](https://cdnjs.com/):
+Los archivos de Chart.js están disponibles en [CDNJS](https://cdnjs.com/):
 
 <https://cdnjs.com/libraries/Chart.js>
 
@@ -25,7 +25,7 @@ Chart.js built files are available on [CDNJS](https://cdnjs.com/):
 
 [![jsdelivr](https://img.shields.io/npm/v/chart.js.svg?label=jsdelivr&style=flat-square&maxAge=600)](https://cdn.jsdelivr.net/npm/chart.js@latest/dist/) [![jsdelivr hits](https://data.jsdelivr.com/v1/package/npm/chart.js/badge)](https://www.jsdelivr.com/package/npm/chart.js)
 
-Chart.js built files are also available through [jsDelivr](https://www.jsdelivr.com/):
+Los archivos de Chart.js también están disponibles a través de [jsDelivr](https://www.jsdelivr.com/):
 
 <https://www.jsdelivr.com/package/npm/chart.js?path=dist>
 
@@ -33,6 +33,6 @@ Chart.js built files are also available through [jsDelivr](https://www.jsdelivr.
 
 [![github](https://img.shields.io/github/release/chartjs/Chart.js.svg?style=flat-square&maxAge=600)](https://github.com/chartjs/Chart.js/releases/latest)
 
-You can download the latest version of [Chart.js on GitHub](https://github.com/chartjs/Chart.js/releases/latest).
+Puedes descargar la última versión de [Chart.js en GitHub](https://github.com/chartjs/Chart.js/releases/latest).
 
-If you download or clone the repository, you must [build](../developers/contributing.md#building-and-testing) Chart.js to generate the dist files. Chart.js no longer comes with prebuilt release versions, so an alternative option to downloading the repo is **strongly** advised.
+Si descargas o clonas el repositorio, debes [build](../developers/contributing.md#building-and-testing) Chart.js para generar los archivos dist. Chart.js ya no viene con versiones de lanzamiento precompiladas, por lo que se recomienda **enfáticamente** una opción alternativa a la descarga del repositorio.

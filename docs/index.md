@@ -2,17 +2,17 @@
 
 [![slack](https://img.shields.io/badge/slack-chartjs-blue.svg?style=flat-square&maxAge=3600)](https://chartjs-slack.herokuapp.com/)
 
-## Installation
+## Instalación
 
-You can get the latest version of Chart.js from [npm](https://npmjs.com/package/chart.js), the [GitHub releases](https://github.com/chartjs/Chart.js/releases/latest), or use a [Chart.js CDN](https://www.jsdelivr.com/package/npm/chart.js). Detailed installation instructions can be found on the [installation](./getting-started/installation.md) page.
+Puedes obtener la última versión de Chart.js de [npm](https://npmjs.com/package/chart.js), de [GitHub releases](https://github.com/chartjs/Chart.js/releases/latest), o usa un [CDN de Chart.js](https://www.jsdelivr.com/package/npm/chart.js). Las instrucciones de instalación detalladas se pueden encontrar en la página [instalación](./getting-started/installation.md).
 
-If you're using a front-end framework (e.g., React, Angular, or Vue), please check [available integrations](https://github.com/chartjs/awesome#integrations).
+Si estás utilizando un framework de front-end (por ejemplo, React, Angular o Vue), consulta [integraciones disponibles](https://github.com/chartjs/awesome#integrations).
 
-## Creating a Chart
+## Creación de un Chart
 
-It's easy to get started with Chart.js. All that's required is the script included in your page along with a single `<canvas>` node to render the chart.
+Es fácil comenzar con Chart.js. Todo lo que necesitas es incluir el script en tu página junto con un solo nodo `<canvas>` para renderizar el chart.
 
-In this example, we create a bar chart for a single dataset and render that in our page. You can see all the ways to use Chart.js in the [usage documentation](./getting-started/usage.md).
+En este ejemplo, creamos un gráfico de barras para un solo conjunto de datos y lo representamos en nuestra página. Puedes ver todas las formas de usar Chart.js en la [documentación de uso](./getting-started/usage.md).
 
 ```html
 <canvas id="myChart" width="400" height="400"></canvas>
@@ -55,14 +55,14 @@ const myChart = new Chart(ctx, {
 </script>
 ```
 
-## Contributing
+## Contribuir
 
-Before submitting an issue or a pull request to the project, please take a moment to look over the [contributing guidelines](./developers/contributing.md) first.
+Antes de enviar un issue o un pull request al proyecto, tómate un momento para revisar las [directrices de contribución](./developers/contributing.md).
 
-For support using Chart.js, please post questions with the [`chartjs` tag on Stack Overflow](https://stackoverflow.com/questions/tagged/chartjs).
+Para obtener ayuda con el uso de Chart.js, publica preguntas con la etiqueta [`chartjs` en Stack Overflow](https://stackoverflow.com/questions/tagged/chartjs).
 
-## License
+## Licencia
 
-Chart.js is available under the [MIT license](https://opensource.org/licenses/MIT).
+Chart.js está disponible bajo la [licencia MIT](https://opensource.org/licenses/MIT).
 
-Documentation is copyright © 2014-2021 Chart.js contributors.
+La documentación tiene copyright de contribuidores de © 2014-2021 Chart.js.

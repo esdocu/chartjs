@@ -10,7 +10,7 @@ Namespace: `options.plugins.legend`, the global options for the chart legend is 
 The doughnut, pie, and polar area charts override the legend defaults. To change the overrides for those chart types, the options are defined in `Chart.overrides[type].plugins.legend`.
 :::
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `display` | `boolean` | `true` | Is the legend shown?
 | `position` | `string` | `'top'` | Position of the legend. [more...](#position)
@@ -53,7 +53,7 @@ Defaults to `'center'` for unrecognized values.
 
 Namespace: `options.plugins.legend.labels`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `boxWidth` | `number` | `40` | Width of coloured box.
 | `boxHeight` | `number` | `font.size` | Height of the coloured box.
@@ -71,7 +71,7 @@ Namespace: `options.plugins.legend.labels`
 
 Namespace: `options.plugins.legend.title`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `color` | [`Color`](../general/colors.md) | `Chart.defaults.color` | Color of text.
 | `display` | `boolean` | `false` | Is the legend title displayed.

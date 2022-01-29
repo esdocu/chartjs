@@ -10,6 +10,6 @@ Setting `devicePixelRatio` to a value other than 1 will force the canvas size to
 
 Namespace: `options`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `devicePixelRatio` | `number` | `window.devicePixelRatio` | Override the window's default devicePixelRatio.

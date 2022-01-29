@@ -1,8 +1,8 @@
-# Integration
+# Integración
 
-Chart.js can be integrated with plain JavaScript or with different module loaders. The examples below show how to load Chart.js in different systems.
+Chart.js se puede integrar con JavaScript simple o con diferentes cargadores de módulos. Los siguientes ejemplos muestran cómo cargar Chart.js en diferentes sistemas.
 
-## Script Tag
+## Etiqueta Script
 
 ```html
 <script src="path/to/chartjs/dist/chart.js"></script>
@@ -20,9 +20,9 @@ const myChart = new Chart(ctx, {...});
 
 ## Bundlers (Webpack, Rollup, etc.)
 
-Chart.js 3 is tree-shakeable, so it is necessary to import and register the controllers, elements, scales and plugins you are going to use.
+Chart.js 3 es tree-shakeable (remoción de código no utilizado), por lo que es necesario importar y registrar los controladores, elementos, escalas y complementos que vayas a utilizar.
 
-For all available imports see the example below.
+Para todas las importaciones disponibles, consulta el siguiente ejemplo.
 
 ```javascript
 import {
@@ -83,24 +83,24 @@ Chart.register(
 const myChart = new Chart(ctx, {...});
 ```
 
-A short registration format is also available to quickly register everything.
+También está disponible un formato de registro corto para registrar rápidamente todo.
 
 ```javascript
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 ```
 
-And finally there is an separate path to do just the above for you, in one line:
+Y finalmente, hay una ruta separada para hacer exactamente lo anterior por tí, en una línea:
 
 ```javascript
 import Chart from 'chart.js/auto';
 ```
 
-### Helper functions
+### Funciones de ayuda
 
-If you want to use the helper functions, you will need to import these separately from the helpers package and use them as stand-alone functions.
+Si deseas utilizar las funciones de ayuda, deberás importarlas por separado del paquete de ayuda y utilizarlas como funciones independientes.
 
-Example of [Converting Events to Data Values](../configuration/interactions.md#converting-events-to-data-values) using bundlers.
+Ejemplo de [Conversión de eventos en valores de datos](../configuration/interactions.md#converting-events-to-data-values) usando paquetes.
 
 ```javascript
 import Chart from 'chart.js/auto';
@@ -113,7 +113,7 @@ const chart = new Chart(ctx, {
     onClick: (e) => {
       const canvasPosition = getRelativePosition(e, chart);
 
-      // Substitute the appropriate scale IDs
+      // Sustituye las IDS de escala apropiadas
       const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
       const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
     }
@@ -123,7 +123,7 @@ const chart = new Chart(ctx, {
 
 ## Require JS
 
-**Important:** RequireJS [can **not** load CommonJS module as is](https://requirejs.org/docs/commonjs.html#intro), so be sure to require one of the UMD builds instead (i.e. `dist/chart.js`, `dist/chart.min.js`, etc.).
+**Importante:** RequireJS [puede **no** cargar el módulo CommonJS tal cual](https://requirejs.org/docs/commonjs.html#intro), así que asegúrate de requerir una de las compilaciones UMD en su lugar (es decir, `dist/chart.js`, `dist/chart.min.js`, etc.).
 
 ```javascript
 require(['path/to/chartjs/dist/chart.min.js'], function(Chart){
@@ -131,7 +131,7 @@ require(['path/to/chartjs/dist/chart.min.js'], function(Chart){
 });
 ```
 
-**Note:** in order to use the time scale, you need to make sure [one of the available date adapters](https://github.com/chartjs/awesome#adapters) and corresponding date library are fully loaded **after** requiring Chart.js. For this you can use nested requires:
+**Nota:** para usar la escala de tiempo, debes asegurarte de que [uno de los adaptadores de fecha disponibles](https://github.com/chartjs/awesome#adapters) y la biblioteca de fechas correspondiente estén completamente cargadas **después** de requerir Chart.js. Para esto puedes usar requisitos anidados:
 
 ```javascript
 require(['chartjs'], function(Chart) {

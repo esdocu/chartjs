@@ -10,7 +10,7 @@ The following additional configuration options are provided by the radial linear
 
 Namespace: `options.scales[scaleId]`
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `animate` | `boolean` | `true` | Whether to animate scaling the chart from the centre
 | `angleLines` | `object` | | Angle line configuration. [more...](#angle-line-options)

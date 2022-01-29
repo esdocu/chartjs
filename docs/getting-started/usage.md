@@ -1,26 +1,26 @@
-# Usage
+# Uso
 
-Chart.js can be used with ES6 modules, plain JavaScript, and module loaders.
+Chart.js se puede usar con módulos ES6, JavaScript plano y cargadores de módulos.
 
-## Creating a Chart
+## Creación de un Chart
 
-To create a chart, we need to instantiate the `Chart` class. To do this, we need to pass in the node, jQuery instance, or 2d context of the canvas of where we want to draw the chart. Here's an example.
+Para crear un gráfico, necesitamos instanciar la clase `Chart`. Para hacer esto, debemos pasar el nodo, la instancia de jQuery o el contexto 2d del lienzo *canvas* donde queremos dibujar el gráfico. Aquí hay un ejemplo.
 
 ```html
 <canvas id="myChart" width="400" height="400"></canvas>
 ```
 
 ```javascript
-// Any of the following formats may be used
+// Cualquiera de los siguientes formatos puede ser usado
 const ctx = document.getElementById('myChart');
 const ctx = document.getElementById('myChart').getContext('2d');
 const ctx = $('#myChart');
 const ctx = 'myChart';
 ```
 
-Once you have the element or context, you're ready to instantiate a pre-defined chart-type or create your own!
+Una vez que tengas el elemento o el contexto, estarás listo para instanciar un tipo de gráfico predefinido o crear uno propio.
 
-The following example instantiates a bar chart showing the number of votes for different colors and the y-axis starting at 0.
+El siguiente ejemplo crea una instancia de un gráfico de barras que muestra la cantidad de votos para diferentes colores y el eje `y` comienza en `0`.
 
 ```html
 <canvas id="myChart" width="400" height="400"></canvas>

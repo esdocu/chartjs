@@ -1,20 +1,20 @@
-# Colors
+# Colores
 
-When supplying colors to Chart options, you can use a number of formats. You can specify the color as a string in hexadecimal, RGB, or HSL notations. If a color is needed, but not specified, Chart.js will use the global default color. There are 3 color options, stored at `Chart.defaults`, to set:
+Al proporcionar colores a las opciones del gráfico, puedes utilizar varios formatos. Puedes especificar el color como una cadena de texto en notaciones hexadecimales, RGB o HSL. Si se necesita un color, pero no se especifica, Chart.js utilizará el color predeterminado global. Hay 3 opciones de color, almacenadas en `Chart.defaults`, para configurar:
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
-| `backgroundColor` | `Color` | `rgba(0, 0, 0, 0.1)` | Background color.
-| `borderColor` | `Color` | `rgba(0, 0, 0, 0.1)` | Border color.
-| `color` | `Color` | `#666` | Font color.
+| `backgroundColor` | `Color` | `rgba(0, 0, 0, 0.1)` | Color de fondo.
+| `borderColor` | `Color` | `rgba(0, 0, 0, 0.1)` | Color de bordes.
+| `color` | `Color` | `#666` | Color de fuentes.
 
-You can also pass a [CanvasGradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient) object. You will need to create this before passing to the chart, but using it you can achieve some interesting effects.
+También puedes pasar un objeto [CanvasGradient](https://developer.mozilla.org/en-US/docs/Web/API/CanvasGradient). Deberás crear esto antes de pasarselo al chart, pero al usarlo puedes lograr algunos efectos interesantes.
 
-## Patterns and Gradients
+## Patrones y degradados
 
-An alternative option is to pass a [CanvasPattern](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern) or [CanvasGradient](https://developer.mozilla.org/en/docs/Web/API/CanvasGradient) object instead of a string colour.
+Una opción alternativa es pasar un [CanvasPattern](https://developer.mozilla.org/en-US/docs/Web/API/CanvasPattern) o [CanvasGradient](https://developer.mozilla.org/en/docs/Web/API/CanvasGradient) en lugar de un color de cadena de texto.
 
-For example, if you wanted to fill a dataset with a pattern from an image you could do the following.
+Por ejemplo, si quisieras llenar un conjunto de datos con un patrón de una imagen, podrías hacer lo siguiente.
 
 ```javascript
 const img = new Image();
@@ -25,7 +25,7 @@ img.onload = function() {
 
     const chart = new Chart(ctx, {
         data: {
-            labels: ['Item 1', 'Item 2', 'Item 3'],
+            labels: ['Elemento 1', 'Elemento 2', 'Elemento 3'],
             datasets: [{
                 data: [10, 20, 30],
                 backgroundColor: fillPattern
@@ -35,9 +35,9 @@ img.onload = function() {
 };
 ```
 
-Using pattern fills for data graphics can help viewers with vision deficiencies (e.g. color-blindness or partial sight) to [more easily understand your data](http://betweentwobrackets.com/data-graphics-and-colour-vision/).
+El uso de rellenos de patrones para gráficos de datos puede ayudar a los espectadores con deficiencias visuales (p. ej., daltonismo o visión parcial) a [comprender más fácilmente sus datos](http://betweentwobrackets.com/data-graphics-and-colour-vision/).
 
-Using the [Patternomaly](https://github.com/ashiguruma/patternomaly) library you can generate patterns to fill datasets.
+Con la biblioteca [Patternomaly](https://github.com/ashiguruma/patternomaly) puedes generar patrones para completar conjuntos de datos.
 
 ```javascript
 const chartData = {
@@ -50,6 +50,6 @@ const chartData = {
             pattern.draw('triangle', '#ffce56')
         ]
     }],
-    labels: ['Red', 'Blue', 'Purple', 'Yellow']
+    labels: ['Rojo', 'Azul', 'Púrpura', 'Amarillo']
 };
 ```

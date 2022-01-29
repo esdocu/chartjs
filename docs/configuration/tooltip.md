@@ -8,7 +8,7 @@ Namespace: `options.plugins.tooltip`, the global options for the chart tooltips 
 The bubble, doughnut, pie, polar area, and scatter charts override the tooltip defaults. To change the overrides for those chart types, the options are defined in `Chart.overrides[type].plugins.tooltip`.
 :::
 
-| Name | Type | Default | Description
+| Nombre | Tipo | Por defecto | Descripción
 | ---- | ---- | ------- | -----------
 | `enabled` | `boolean` | `true` | Are on-canvas tooltips enabled?
 | `external` | `function` | `null` | See [external tooltip](#external-custom-tooltips) section.
