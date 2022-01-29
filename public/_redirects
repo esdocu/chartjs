@@ -1,6 +1,8 @@
 /docs/charts/ /docs/charts/line.html 301
 /docs/general/ /docs/general/data-structures.html 301
 /docs/samples/ /docs/samples/information.html 301
+/ /docs/latest/ 301
+/docs/ /docs/latest/ 301
 /docs/latest/getting-started/v3-migration.html https://www.chartjs.org/docs/latest/getting-started/v3-migration.html 301
 /docs/3.7.0/ /docs/latest/ 301
 /docs/3.6.2/ https://www.chartjs.org/docs/3.6.2/ 301
